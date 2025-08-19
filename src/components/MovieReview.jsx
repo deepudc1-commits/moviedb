@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { FaStar } from "react-icons/fa";
 
-const movieReview = ({reviews}) => {
+const movieReview = ({review}) => {
     const [expandText, setExpandText] = useState(false)
-    console.log(reviews);
-    const {id: reviewerID, author, content, created_at, author_details : {rating}} = reviews[reviews.length-1]
+    console.log(review);
+    const {id: reviewerID, author, content, created_at, author_details : {rating}} = review
   return (
-    <div className="shadow-lg shadow-gray-300">
+    <div className="shadow-lg shadow-gray-300 mb-5">
         <div className="card-body">
             <div className='flex items-start'>
                 <div className="avatar avatar-placeholder mr-2">

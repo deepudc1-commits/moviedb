@@ -127,7 +127,7 @@ const SingleMovie = () => {
             <h2 className="text-2xl font-bold text-start mb-5">Reviews</h2>  
             <div>
               {
-                movieReviews.length < 1 ? <p>There are no reviews for this yet.</p> : <MovieReview reviews={movieReviews} />
+                movieReviews.length < 1 ? <p>There are no reviews for this yet.</p> : <MovieReview review={movieReviews[movieReviews.length - 1]} />
               }
             </div>
           </div>

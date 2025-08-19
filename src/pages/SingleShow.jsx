@@ -55,11 +55,11 @@ export const loader = (queryClient) => async({params}) => {
     
     console.log(recommendedShows);
     
-    return {showDetails, showCredits, showReviews, recommendedShows}
+    return {showDetails, showCredits, showReviews, recommendedShows, tvID}
 }
 
 const SingleShow = () => {
-    const {showDetails, showCredits, showReviews, recommendedShows} = useLoaderData()
+    const {showDetails, showCredits, showReviews, recommendedShows, tvID} = useLoaderData()
     const {cast} = showCredits.data
     console.log(showDetails.data);
       const [showTrailer, setShowTrailer] = useState(false)
@@ -129,10 +129,13 @@ const SingleShow = () => {
           </div>
 
           <div className='mb-10 px-10'>
-            <h2 className="text-2xl font-bold text-start mb-5">Reviews</h2>  
+            <div className='flex justify-between items-center'>
+              <h2 className="text-2xl font-bold text-start mb-5">Reviews</h2> 
+              { showReviews.length > 1 && <Link to={`/tv/${tvID}/reviews`} className='text-end'>View all reviews</Link> }
+            </div>
             <div>
               {
-                showReviews.length < 1 ? <p>There are no reviews for this yet.</p> : <MovieReview reviews={showReviews} />
+                showReviews.length < 1 ? <p>There are no reviews for this yet.</p> : <MovieReview review={showReviews[showReviews.length - 1]} />
               }
             </div>
           </div>
