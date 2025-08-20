@@ -1,6 +1,6 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import { AllReviews, Error, HomeLayout, Landing, Movies, PageFallback, People, Search, Shows, SingleMovie, SinglePerson, SingleShow } from './pages'
+import { AllReviews, AllReviewsMovie, Error, HomeLayout, Landing, Movies, PageFallback, People, Search, Shows, SingleMovie, SinglePerson, SingleShow } from './pages'
 import {loader as landingLoader} from './pages/Landing'
 import {loader as singleMovieLoader} from './pages/SingleMovie'
 import { loader as singleShowLoader } from './pages/SingleShow'
@@ -10,6 +10,7 @@ import { loader as moviesLoader } from './pages/Movies'
 import { loader as showsLoader } from './pages/Shows'
 import { loader as peopleLoader } from './pages/People'
 import { loader as showsReviewsLoader } from './pages/AllReviews'
+import { loader as movieReviewsLoader } from './pages/AllReviewsMovie'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
         path: '/movie/:movieID',
         element: <SingleMovie />,
         loader: singleMovieLoader(queryClient)
+      },
+      {
+        path: '/movie/:movieID/reviews',
+        element: <AllReviewsMovie /> ,
+        loader: movieReviewsLoader(queryClient)
       },
       {
         path: '/tv/:tvID',

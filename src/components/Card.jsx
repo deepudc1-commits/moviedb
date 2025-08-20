@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { Await, Link, useLoaderData } from 'react-router'
 import movieIcon from '../assets/movie_icon.png'
 import showIcon from '../assets/show_icon.png'
+import { formatDate } from '../utils'
 
 const Card = ({products, isMovie, isFeaturedProducts}) => {
     const slicedProducts = isFeaturedProducts ? products.slice(0, 4) : products
@@ -22,7 +23,7 @@ const Card = ({products, isMovie, isFeaturedProducts}) => {
                             <Link to={`/movie/${id}`}>
                                 <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
                             </Link>
-                            <p className="text-gray-900 dark:text-white">{releaseDate}</p>
+                            <p className="text-gray-900 dark:text-white">{formatDate(releaseDate)}</p>
                             <div className="flex items-center mt-2.5">
                                 <div className="flex items-center space-x-1 rtl:space-x-reverse">
                                     <svg className="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">

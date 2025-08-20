@@ -1,8 +1,9 @@
 import React, { Suspense, useState } from 'react'
 import { customFetch, formatDate, formatPrice, formatTime } from '../utils'
 import { Await, Link, useLoaderData} from 'react-router';
-import { MovieReview, PersonCard } from '../components';
+import { Card, MovieReview, PersonCard } from '../components';
 import { useQuery } from '@tanstack/react-query';
+import movieIcon from '../assets/movie_icon.png'
 import { FaLanguage, FaInfo, FaPlay } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
 import { GrMoney, GrStatusInfo } from "react-icons/gr";
@@ -29,6 +30,13 @@ const reviewsQuery = (id) => {
   }
 }
 
+const recommendedMoviesQuery = (id) => {
+  return {
+    queryKey: ['fetchRecommendedMovies', id],
+    queryFn: () => customFetch(`/movie/${id}/recommendations`)
+  }
+}
+
 export const loader = (queryClient) => async({params}) => {
   const {movieID} = params
   
@@ -37,13 +45,16 @@ export const loader = (queryClient) => async({params}) => {
   void queryClient.prefetchQuery(trailerQuery(movieID))
   const movieReviewsResponse = await queryClient.ensureQueryData(reviewsQuery(movieID))
   const movieReviews = movieReviewsResponse.data.results
-  console.log(movieReviews);
+
+  const movieRecommendationResponse = await queryClient.ensureQueryData(recommendedMoviesQuery(movieID))
+  const movieRecommendations = movieRecommendationResponse?.data?.results
+  console.log(movieRecommendationResponse);
   
-  return ({movieDetails, movieCredits: movieCreditsResponse, movieReviews})
+  return ({movieDetails, movieCredits: movieCreditsResponse, movieReviews, movieRecommendations})
 }
 
 const SingleMovie = () => {
-  const {movieDetails, movieCredits, movieReviews} = useLoaderData()
+  const {movieDetails, movieCredits, movieReviews, movieRecommendations} = useLoaderData()
   console.log(movieDetails);
   const [showTrailer, setShowTrailer] = useState(false)
 
@@ -67,7 +78,7 @@ const SingleMovie = () => {
         <div className='overlay p-10'>
           <div className='grid grid-cols-4 gap-5'>
             <div>
-              <img className='rounded-lg' src={`https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}`} alt={title} />
+              <img className='rounded-lg' src={ poster_path ? `https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}` : movieIcon} alt={title} />
             </div>
             <div className='col-span-3 text-white'>
               <h1 className='font-bold mb-1'>{title}</h1>
@@ -90,7 +101,7 @@ const SingleMovie = () => {
                 </div>
                 <span className='font-semibold text-lg mr-5'>User <br />score</span>
 
-                <button className='btn btn-success' onClick={() => playTrailer()}><FaPlay />Play Trailer</button>
+                { trailer && <button className='btn btn-success' onClick={() => playTrailer()}><FaPlay />Play Trailer</button> }
               </div>
 
               {tagline && <p className='italic text-lg'>{tagline}</p>}
@@ -124,18 +135,30 @@ const SingleMovie = () => {
           </div>
 
           <div className='mb-10 px-10'>
-            <h2 className="text-2xl font-bold text-start mb-5">Reviews</h2>  
+            <div className='flex justify-between items-center'>
+              <h2 className="text-2xl font-bold text-start mb-5">Reviews</h2> 
+              { movieReviews?.length > 1 && <Link to={`/movie/${id}/reviews`} className='text-end'>View all reviews</Link> }
+            </div> 
             <div>
               {
-                movieReviews.length < 1 ? <p>There are no reviews for this yet.</p> : <MovieReview review={movieReviews[movieReviews.length - 1]} />
+                movieReviews?.length < 1 ? <p>There are no reviews for this yet.</p> : <MovieReview review={movieReviews[movieReviews.length - 1]} />
               }
             </div>
           </div>
 
-          <div className='px-10'></div>
+          { movieRecommendations.length < 1 ? null : 
+            <div className='mb-10'>
+              <div className='px-10'>
+                <h2 className="text-2xl font-bold text-start mb-5">Recommended movies</h2>
+                <div className='container grid grid-flow-col auto-cols-[16rem] overflow-x-auto gap-8'>
+                  <Card products={movieRecommendations} isMovie={true} />
+                </div>
+              </div>
+            </div>
+          }
         </div>
 
-        <div>
+        <div className='pr-5'>
           <div className='flex items-center'>
             <GrStatusInfo className='text-xl mr-2' />
             <h3 className='font-semibold'>Status</h3>

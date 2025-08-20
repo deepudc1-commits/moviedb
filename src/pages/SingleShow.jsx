@@ -1,6 +1,7 @@
-import React, { Suspense, useState } from 'react'
+import React, { useState } from 'react'
 import { customFetch, formatDate } from '../utils';
-import { Await, Link, useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
+import showIcon from '../assets/show_icon.png'
 import { FaLanguage, FaPlay } from 'react-icons/fa';
 import { GrStatusInfo } from 'react-icons/gr';
 import { MdOutlineTitle, MdLiveTv } from 'react-icons/md';
@@ -64,7 +65,7 @@ const SingleShow = () => {
     console.log(showDetails.data);
       const [showTrailer, setShowTrailer] = useState(false)
     
-    const { id, name, overview, tagline, poster_path, backdrop_path, episode_run_time, first_air_date, genres, vote_average, status, type, original_name, original_language, networks } = showDetails.data
+    const { id, name, overview, tagline, poster_path, backdrop_path, first_air_date, genres, vote_average, status, type, original_name, original_language, networks } = showDetails.data
     const vote = Math.round(vote_average * 10)
 
     const {data: trailerResponse} = useQuery(trailerQuery(id))
@@ -83,13 +84,12 @@ const SingleShow = () => {
         <div className='overlay p-10'>
           <div className='grid grid-cols-4 gap-5'>
             <div>
-              <img className='rounded-lg' src={`https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}`} alt={name} />
+              <img className='rounded-lg' src={ poster_path ? `https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}` : showIcon} alt={name} />
             </div>
             <div className='col-span-3 text-white'>
               <h1 className='font-bold mb-1'>{name}</h1>
               <ul className='flex list-disc list-inside gap-3 mb-4'>
                 {first_air_date &&<li>{formatDate(first_air_date)}</li> }
-                <li>{episode_run_time.length > 0 ? episode_run_time[0] : '0'} m</li>
                 <li>
                   {
                     genres.map((genre, index) => {
@@ -153,7 +153,7 @@ const SingleShow = () => {
         </div>
           
 
-        <div>
+        <div className='pr-5'>
           {networks.length > 0 && <>
             <div className='flex items-center mb-2'>
               <MdLiveTv className='text-xl mr-2' />

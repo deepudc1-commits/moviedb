@@ -50,7 +50,7 @@ const AllReviews = () => {
         </div>  
 
         <div className='grid grid-cols-4 gap-5'>
-            <div className='col-span-3'>
+            <div className='col-span-4'>
                 <div className='mb-10 px-10'>
                     <h2 className="text-2xl font-bold text-start mb-5">Reviews</h2> 
                     <div>

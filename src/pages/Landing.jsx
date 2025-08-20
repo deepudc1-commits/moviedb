@@ -229,7 +229,7 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className='bg-cover' style={{backgroundImage: `url(https://media.themoviedb.org/t/p/w1920_and_h427_multi_faces${trailerBanner})`}}>      
+      <div className='bg-cover bg-center' style={{backgroundImage: `url(https://media.themoviedb.org/t/p/w1920_and_h427_multi_faces${trailerBanner})`}}>      
         <div className='overlay px-10 py-20'>
           <div className='flex justify-between items-center'>
             <h2 className='text-2xl font-bold text-start mb-5 text-white'>Top Trailers</h2>
