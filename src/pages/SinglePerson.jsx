@@ -65,8 +65,8 @@ const SinglePerson = () => {
               </ul>
 
               <h2 className='text-2xl font-bold text-start mb-2'>Biography</h2>
-              { biography ? <p>{ expandBio ? biography : <>{`${biography.slice(0, 450)}...`}<button onClick={() => setExpandBio(true)} className='btn btn-link'>View more</button></>}</p> : 
-                <p>There is no biography for this person!</p> }
+              { biography ? <p>{ expandBio ? biography : <>{`${biography.slice(0, 450)}`}{biography.length > 450 && <>...<button onClick={() => setExpandBio(true)} className='btn btn-link'>View more</button></>}</>}</p> : 
+                <p>There is no biography available for this person!</p> }
             </div>
           </div>
           
@@ -78,7 +78,7 @@ const SinglePerson = () => {
           { actedMovies.length < 1 ? null : 
             <div className='mb-10'>
               <div className='px-10'>
-                <h2 className="text-2xl font-bold text-start mb-5">Moviessss</h2>
+                <h2 className="text-2xl font-bold text-start mb-5">Movies</h2>
                 <div className='container grid grid-flow-col auto-cols-[17rem] overflow-x-auto gap-8'>
                   <Card products={actedMovies} isMovie={true} />
                 </div>

@@ -122,9 +122,9 @@ const SingleMovie = () => {
                     const {cast} = creditsResponse.data
                     return (
                       <div className='px-10'>
-                        <h2 className="text-2xl font-bold text-start mb-5">Cast</h2>
-                        <div className='container grid grid-flow-col auto-cols-[9rem] overflow-x-auto gap-8'>
-                          <PersonCard products={cast} />
+                        <h2 className="text-2xl font-bold text-start">Cast</h2>
+                        <div className='container grid grid-flow-col auto-cols-[9rem] overflow-x-auto gap-8 pt-5'>
+                          <PersonCard products={cast} hasCharacter={true} />
                         </div>
                       </div>
                     )

@@ -43,7 +43,7 @@ const Search = () => {
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input className='input input-md' type='search' name='query' defaultValue={searchTerm} />
+            <input className='input input-md' type='search' name='query' defaultValue={searchTerm} required />
           </label>
           <button className='btn btn-accent w-30 ml-1' type='submit'>Search</button>
         </Form>

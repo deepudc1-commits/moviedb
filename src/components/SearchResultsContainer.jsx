@@ -25,19 +25,19 @@ const SearchResultsContainer = ({results}) => {
 
   return (
     <div>
-        <h2>Movies</h2>
-        <div>
-            {moviesArr.length === 0 ? <div>No movies found!</div> : <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'><Card products={moviesArr} isMovie={true} /></div> }
+        <div className='px-10 mb-10'>
+            <h2 class="text-2xl font-bold text-start mb-3">Movies</h2>
+            {moviesArr.length === 0 ? <div>No movies found with this search term!</div> : <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'><Card products={moviesArr} isMovie={true} /></div> }
+        </div>        
+
+        <div className='px-10 mb-10'>
+            <h2 class="text-2xl font-bold text-start mb-3">TV Shows</h2>
+            {showsArr.length === 0 ? <div>No TV shows found with this search term!</div> : <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'><Card products={showsArr} /></div> }
         </div><br />
 
-        <h2>Tv Shows</h2>
-        <div>
-            {showsArr.length === 0 ? <div>No TV shows found!</div> : <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'><Card products={showsArr} /></div> }
-        </div><br />
-
-        <h2>People</h2>
-        <div>
-            {peopleArr.length === 0 ? <div>No people found!</div> : <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20'><PersonCard products={peopleArr} /></div> }
+        <div className='px-10'>
+            <h2 class="text-2xl font-bold text-start mb-3">People</h2>
+            {peopleArr.length === 0 ? <div>No people found with this search term!</div> : <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20'><PersonCard products={peopleArr} /></div> }
         </div><br />
     </div>
   )
