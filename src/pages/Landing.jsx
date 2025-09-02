@@ -146,7 +146,7 @@ const Landing = () => {
             </p>
             <div className='mb-5'>
               <Form action='/search' method='get'>
-                <label className="input w-3xl">
+                <label className="input w-full md:w-4/5">
                   <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g
                       strokeLinejoin="round"
@@ -161,7 +161,7 @@ const Landing = () => {
                   </svg>
                   <input className='input input-md' type='search' placeholder='search' name='query' />
                 </label>
-                <button className='btn btn-accent w-30 ml-1' type='submit'>Search</button>
+                <button className='btn btn-accent w-full md:w-30 md:ml-1 mt-2 md:mt-0' type='submit'>Search</button>
               </Form>
             </div>
           </div>

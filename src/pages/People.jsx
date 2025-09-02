@@ -51,7 +51,9 @@ const People = () => {
       <div className=' px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
         <PersonCard products={people} />
       </div>
-      <button onClick={loadPeople} className='btn btn-success'>Load more</button>
+      <div className='flex justify-center mt-8 mb-8'>
+        <button onClick={loadPeople} className='btn btn-success'>Load more</button>
+      </div>
     </div>
   )
 }
