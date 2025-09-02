@@ -137,7 +137,7 @@ const Landing = () => {
         className="hero min-h-92"
         style={{backgroundImage:`url(https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces${banner})`, backgroundPosition: 'center center'}}>
         <div className="hero-overlay"></div>
-        <div className="hero-content text-neutral-content text-center">
+        <div className="hero-content text-neutral-content text-center px-10 md:px-0">
           <div className="max-w-5xl">
             <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
             <p className="mb-5">
@@ -183,9 +183,9 @@ const Landing = () => {
 
 
       <div className='mb-10 px-10 py-10 bg-gray-200'>
-        <div className='flex justify-between items-center'>
+        <div className='md:flex justify-between items-center'>
           <h2 className='text-2xl font-bold text-start mb-3'>Trending movies</h2>
-          <div className='text-end mb-5'>
+          <div className='md:text-end mb-5'>
             <button className={`btn ${topMovieDuration === 'week' ? 'btn-outline' : null}  btn-accent`} onClick={() => setTopMovieDuration('day')}>Today</button> | <button className={`btn ${topMovieDuration === 'day' ? 'btn-outline' : null}  btn-accent`} onClick={() => setTopMovieDuration('week')}>This week</button>
           </div>
         </div>
@@ -282,9 +282,9 @@ const Landing = () => {
 
 
       <div className='px-10 py-10 bg-gray-200'>
-        <div className='flex justify-between items-center'>
+        <div className='md:flex justify-between items-center'>
           <h2 className='text-2xl font-bold text-start mb-3'>Trending shows</h2>
-          <div className='text-end mb-5'>
+          <div className='md:text-end mb-5'>
             <button className={`btn ${topShowDuration === 'week' ? 'btn-outline' : null}  btn-accent`} onClick={() => setTopShowDuration('day')}>Today</button> | <button className={`btn ${topShowDuration === 'day' ? 'btn-outline' : null}  btn-accent`} onClick={() => setTopShowDuration('week')}>This week</button>
           </div>
         </div>
