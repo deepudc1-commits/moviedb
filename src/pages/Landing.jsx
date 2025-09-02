@@ -146,8 +146,8 @@ const Landing = () => {
             </p>
             <div className='mb-5'>
               <Form action='/search' method='get'>
-                <label className="input w-full md:w-4/5">
-                  <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <label className="input w-full md:w-4/5 focus:outline-none">
+                  <svg className="h-[1em] text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g
                       strokeLinejoin="round"
                       strokeLinecap="round"
@@ -159,7 +159,7 @@ const Landing = () => {
                       <path d="m21 21-4.3-4.3"></path>
                     </g>
                   </svg>
-                  <input className='input input-md' type='search' placeholder='search' name='query' />
+                  <input className='input input-md focus:outline-none placeholder-gray-400 text-black' type='search' placeholder='search' name='query' />
                 </label>
                 <button className='btn btn-accent w-full md:w-30 md:ml-1 mt-2 md:mt-0' type='submit'>Search</button>
               </Form>

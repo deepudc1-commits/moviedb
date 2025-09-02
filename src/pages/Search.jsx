@@ -30,8 +30,8 @@ const Search = () => {
     <div className='mt-10'>
       <div className='max-w-8xl text-center mb-10'>
         <Form method='get'>
-          <label className="input w-3xl">
-            <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <label className="input w-full md:w-3/5 focus:outline-none">
+            <svg className="h-[1em] text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g
                 strokeLinejoin="round"
                 strokeLinecap="round"
@@ -43,9 +43,9 @@ const Search = () => {
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input className='input input-md' type='search' name='query' defaultValue={searchTerm} required />
+            <input className='input input-md focus:outline-none placeholder-gray-400 text-black' type='search' name='query' placeholder='search' defaultValue={searchTerm} required />
           </label>
-          <button className='btn btn-accent w-30 ml-1' type='submit'>Search</button>
+          <button className='btn btn-accent w-full md:w-30 md:ml-1 mt-2 md:mt-0' type='submit'>Search</button>
         </Form>
       </div>
       <SearchResultsContainer results={results} />
