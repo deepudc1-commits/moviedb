@@ -55,7 +55,7 @@ const SinglePerson = () => {
                   <p className='mar-bot0'>{birthday ? formatDate(birthday) : 'N/A'}</p>
                 </li>
 
-                <li className='flex items-center'>
+                <li className='sm:flex items-center'>
                   <div className='flex items-center mr-2'>
                     <MdOutlineMapsHomeWork className='text-xl mr-2' />
                     <h3 className='font-semibold'>Place of birth:</h3>
