@@ -139,8 +139,8 @@ const Landing = () => {
         <div className="hero-overlay"></div>
         <div className="hero-content text-neutral-content text-center px-10 md:px-0">
           <div className="max-w-5xl">
-            <h1 className="mb-5 text-5xl font-bold">Welcome to FilmsVault</h1>
-            <p className="mb-5 text-2xl">
+            <h1 className="mb-5 md:text-5xl font-bold">Welcome to FilmsVault</h1>
+            <p className="mb-5 md:text-2xl">
               Your ultimate guide to movies and shows, where every story finds its spotlight. <br /> Discover what’s worth watching and why.
             </p>
             <div className='mb-5'>
