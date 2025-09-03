@@ -82,7 +82,7 @@ const SingleMovie = () => {
             </div>
             <div className='col-span-3 text-white'>
               <h1 className='font-bold mb-1'>{title}</h1>
-              <ul className='flex list-disc list-inside gap-3 mb-4'>
+              <ul className='md:flex list-disc list-inside gap-3 mb-4'>
                 <li>{formatDate(release_date)}</li>
                 <li>{formatTime(runtime)}</li>
                 <li>
