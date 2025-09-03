@@ -123,7 +123,7 @@ const SingleShow = () => {
             <div className='px-10'>
               <h2 className="text-2xl font-bold text-start">Cast</h2>
               <div className='container'>
-                <div className='max-w-80 sm:max-w-screen grid grid-flow-col auto-cols-[9rem] overflow-x-auto gap-8 pt-5'>
+                <div className='max-w-60 sm:max-w-screen grid grid-flow-col auto-cols-[9rem] overflow-x-auto gap-8 pt-5'>
                   <PersonCard products={cast} hasCharacter={true} />
                 </div>
               </div>
@@ -147,7 +147,7 @@ const SingleShow = () => {
             <div className='px-10'>
               <h2 className="text-2xl font-bold text-start mb-5">Recommended series</h2>
               <div className='container'>
-                <div className='max-w-80 sm:max-w-screen grid grid-flow-col auto-cols-[16rem] overflow-x-auto gap-8'>
+                <div className='max-w-60 sm:max-w-screen grid grid-flow-col auto-cols-[16rem] overflow-x-auto gap-8'>
                   <Card products={recommendedShows} />
                 </div>
               </div>
