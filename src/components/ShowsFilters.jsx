@@ -12,11 +12,12 @@ const ShowsFilters = () => {
     <>
       <Form className='my-10'>
         <SelectBtn name='sort_by' label='Sort by' list={sortList} defaultValue={sort_by} />
-        <label htmlFor='with_networks' className='form-control w-full max-w-xs'>
-          <div className='label'>
-              <span className='label-text'>Choose Network: </span>
+        <label htmlFor='with_networks' className='form-control w-full max-w-xs md:ml-5'>
+          <div className='label mr-2'>
+              <span className='label-text'>Network</span>
           </div>
           <select name='with_networks' id={with_networks} defaultValue={with_networks} className='select select-bordered'>
+              <option value="">Choose network</option>
               {
                 networksList.map((network) => {
                   const {id, name} = network

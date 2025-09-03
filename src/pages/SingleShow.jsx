@@ -82,13 +82,13 @@ const SingleShow = () => {
     <div>
       <div className='mb-10 bg-gray-200 bg-cover' style={{backgroundImage: `url(https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces${backdrop_path})`}}>
         <div className='overlay p-10'>
-          <div className='grid grid-cols-4 gap-5'>
+          <div className='grid md:grid-cols-4 gap-5'>
             <div>
               <img className='rounded-lg' src={ poster_path ? `https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}` : showIcon} alt={name} />
             </div>
             <div className='col-span-3 text-white'>
               <h1 className='font-bold mb-1'>{name}</h1>
-              <ul className='flex list-disc list-inside gap-3 mb-4'>
+              <ul className='md:flex list-disc list-inside gap-3 mb-4'>
                 {first_air_date &&<li>{formatDate(first_air_date)}</li> }
                 <li>
                   {
@@ -117,13 +117,15 @@ const SingleShow = () => {
       </div>
 
 
-      <div className='grid grid-cols-4 gap-5'>
-        <div className='col-span-3'>
+      <div className='grid md:grid-cols-4 gap-5'>
+        <div className='md:col-span-3'>
           <div className='mb-10'>
             <div className='px-10'>
               <h2 className="text-2xl font-bold text-start">Cast</h2>
-              <div className='container grid grid-flow-col auto-cols-[9rem] overflow-x-auto gap-8 pt-5'>
-                <PersonCard products={cast} hasCharacter={true} />
+              <div className='container'>
+                <div className='max-w-100 sm:max-w-screen grid grid-flow-col auto-cols-[9rem] overflow-x-auto gap-8 pt-5'>
+                  <PersonCard products={cast} hasCharacter={true} />
+                </div>
               </div>
             </div>
           </div>
@@ -144,16 +146,18 @@ const SingleShow = () => {
           <div className='mb-10'>
             <div className='px-10'>
               <h2 className="text-2xl font-bold text-start mb-5">Recommended series</h2>
-              <div className='container grid grid-flow-col auto-cols-[16rem] overflow-x-auto gap-8'>
-                <Card products={recommendedShows} />
+              <div className='container'>
+                <div className='max-w-100 sm:max-w-screen grid grid-flow-col auto-cols-[16rem] overflow-x-auto gap-8'>
+                  <Card products={recommendedShows} />
+                </div>
               </div>
             </div>
           </div>
           }
         </div>
           
-
-        <div className='pr-5'>
+        
+        <div className='pr-5 pl-10 md:pl-0 order-first md:order-last'>
           {networks.length > 0 && <>
             <div className='flex items-center mb-2'>
               <MdLiveTv className='text-xl mr-2' />
