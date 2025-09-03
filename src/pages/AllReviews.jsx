@@ -36,7 +36,7 @@ const AllReviews = () => {
     <div>
         <div className='mb-10 bg-gray-200 bg-cover'>
             <div className='overlay p-10'>
-                <div className='grid grid-cols-8 gap-5 items-center'>
+                <div className='grid md:grid-cols-8 gap-5 items-center'>
                     <div>
                         <img className='rounded-lg' src={`https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}`} alt={name} />
                     </div>
