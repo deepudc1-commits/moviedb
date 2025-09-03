@@ -31,8 +31,8 @@ const SinglePerson = () => {
     <div>
       <div className='mb-10 bg-gray-200 bg-cover' style={{backgroundColor: '#000'}}>
         <div className='overlay p-10'>
-          <div className='grid md:grid-cols-4 gap-5'>
-            <div>
+          <div className='md:grid md:grid-cols-4 gap-5'>
+            <div className='mb-5 md:mb-0'>
               <img className='rounded-lg' src={ profile_path ? `https://media.themoviedb.org/t/p/w600_and_h900_bestv2${profile_path}` : personImg} alt={name} />
             </div>
 
