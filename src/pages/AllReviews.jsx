@@ -42,7 +42,7 @@ const AllReviews = () => {
                     </div>
                     <div className='col-span-7'>
                         <h1 className='text-white mb-5'>{name}</h1>
-                        <Link to={`/tv/${tvID}`} className='btn btn-success'>Back to TV series</Link>
+                        <Link to={`/tv/${tvID}`} className='btn btn-success'><span className='text-gray-700'>Back to TV series</span></Link>
                     </div>
                     
                 </div>

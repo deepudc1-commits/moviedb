@@ -42,7 +42,7 @@ const AllReviewsMovie = () => {
                     </div>
                     <div className='col-span-7'>
                         <h1 className='text-white mb-5'>{title}</h1>
-                        <Link to={`/movie/${movieID}`} className='btn btn-success'>Back to movie</Link>
+                        <Link to={`/movie/${movieID}`} className='btn btn-success'><span className='text-gray-700'>Back to movie</span></Link>
                     </div>
                     
                 </div>
