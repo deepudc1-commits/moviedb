@@ -52,7 +52,7 @@ const ShowsContainer = () => {
     <>
       <div className='flex justify-between items-center mt-8 mb-8 border-b border-base-300 pb-5'>
         <h4 className="font-medium text-md">Results:</h4>
-        <div className='flex gap-x-2'>
+        <div className='hidden md:flex gap-x-2'>
           <button className={`text-xl btn btn-circle btn-sm ${wideView ? 'btn-accent text-accent-content' : 'btn-ghost text-based-content' }`} onClick={() => setWideView(true)}><BsList /></button>
           <button className={`text-xl btn btn-circle btn-sm ${!wideView ? 'btn-accent text-accent-content' : 'btn-ghost text-based-content' }`} onClick={() => setWideView(false)}><BsFillGridFill /></button>
         </div>
