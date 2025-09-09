@@ -3,6 +3,8 @@ import { useLoaderData } from 'react-router-dom'
 import Card from './Card';
 import { customFetch } from '../utils';
 import { useQueryClient } from '@tanstack/react-query';
+import WideCard from './WideCard';
+import { BsFillGridFill, BsList } from 'react-icons/bs';
 
 const fetchShowsQuery = (queryParams, page) => {
   const {with_genres, sort_by} = queryParams;
@@ -19,6 +21,7 @@ const ShowsContainer = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(initialTotalPages)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
+  const [wideView, setWideView] = useState(false)
 
   useEffect(() => {
     setShows(initialShows)
@@ -47,9 +50,14 @@ const ShowsContainer = () => {
 
   return (
     <>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
-        <Card products={shows} />
+      <div className='flex justify-between items-center mt-8 mb-8 border-b border-base-300 pb-5'>
+        <h4 className="font-medium text-md">Results:</h4>
+        <div className='flex gap-x-2'>
+          <button className={`text-xl btn btn-circle btn-sm ${wideView ? 'btn-accent text-accent-content' : 'btn-ghost text-based-content' }`} onClick={() => setWideView(true)}><BsList /></button>
+          <button className={`text-xl btn btn-circle btn-sm ${!wideView ? 'btn-accent text-accent-content' : 'btn-ghost text-based-content' }`} onClick={() => setWideView(false)}><BsFillGridFill /></button>
+        </div>
       </div>
+        {wideView ? <WideCard products={shows} /> : <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'><Card products={shows} /></div>}
       <div className='flex justify-center mt-8 mb-8'>
         {
           currentPage < totalPages && <button onClick={loadMoreShows} disabled={isLoadingMore} className='btn btn-success mx-auto'>{isLoadingMore? 'Loading...' : 'Load more'}</button>

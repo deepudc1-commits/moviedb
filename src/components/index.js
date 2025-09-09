@@ -1,4 +1,5 @@
 export {default as Card} from './Card'
+export {default as WideCard} from './WideCard'
 export {default as ShowCard} from './ShowCard'
 export {default as SearchResultsContainer} from './SearchResultsContainer'
 export {default as Loading} from './Loading'

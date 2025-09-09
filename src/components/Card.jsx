@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react'
-import { Await, Link, useLoaderData } from 'react-router'
+import React from 'react'
+import { Link } from 'react-router'
 import movieIcon from '../assets/movie_icon.png'
 import showIcon from '../assets/show_icon.png'
 import { formatDate } from '../utils'
@@ -24,7 +24,7 @@ const Card = ({products, isMovie, isFeaturedProducts}) => {
                                 style={{ "--value": vote } /* as React.CSSProperties */ } aria-valuenow={vote} role="progressbar">
                                 <span className='text-xl font-bold'>{vote}%</span>
                             </div>
-                            <Link to={`/movie/${id}`}>
+                            <Link to={`/${isMovie ? 'movie' : 'tv'}/${id}`}>
                                 <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
                             </Link>
                             <p className="text-gray-900 dark:text-white mar-bot0">{formatDate(releaseDate)}</p>                          
