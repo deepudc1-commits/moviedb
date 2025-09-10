@@ -7,7 +7,7 @@ const HomeLayout = () => {
   return (
     <div className='grid grid-rows-[auto_1fr_auto] min-h-[100dvh] flex-r'>
       <Navbar />
-      {navigation.state === 'loading' ? <div className='flex justify-center'><span className="loading loading-dots loading-xl"></span></div> : <Outlet />}
+      {navigation.state === 'loading' ? <div className='h-screen flex items-center justify-center'><span className='loading loading-ring loading-lg'></span></div> : <Outlet />}
       <Footer />
     </div>
   )
