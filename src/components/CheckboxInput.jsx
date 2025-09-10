@@ -6,7 +6,7 @@ const CheckboxInput = ({name, label, defaultValue, isChecked}) => {
     <label htmlFor={defaultValue} className='label cursor-pointer mr-1'>
         <span className='label-text capitalize'>{label}</span>
     </label>
-    <input type='checkbox' id={defaultValue} name={name} value={defaultValue} defaultChecked={isChecked} className={`checkbox checkbox-primary`} />
+    <input type='checkbox' id={defaultValue} name={name} value={defaultValue} defaultChecked={isChecked} className={`checkbox checkbox-success`} />
     </div>
   )
 }
