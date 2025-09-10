@@ -4,6 +4,8 @@ import { useLoaderData } from 'react-router-dom'
 import Card from './Card';
 import { useQueryClient } from '@tanstack/react-query';
 import { customFetch } from '../utils';
+import { BsFillGridFill, BsList } from 'react-icons/bs';
+import WideCard from './WideCard';
 
 // Use the same query logic as in the loader, but for the next page
 const popularMoviesQuery = (queryParams, pageNum) => {
@@ -20,6 +22,7 @@ const MoviesContainer = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(initialTotalPages);
     const [isLoadingMore, setIsLoadingMore] = useState(false)
+    const [wideView, setWideView] = useState(false)
     const queryClient = useQueryClient()
     
     // Reset movies and page when filters (params) change
@@ -51,9 +54,14 @@ const MoviesContainer = () => {
 
   return (
     <div className='px-10'>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
-        <Card products={movies} isMovie={true} />
+      <div className='flex justify-between items-center mt-5 mb-5 border-b border-base-300 pb-5'>
+        <h4 className="font-medium text-md">Results:</h4>
+        <div className='hidden md:flex gap-x-2'>
+          <button className={`text-xl btn btn-circle btn-sm ${wideView ? 'btn-accent text-accent-content' : 'btn-ghost text-based-content' }`} onClick={() => setWideView(true)}><BsList /></button>
+          <button className={`text-xl btn btn-circle btn-sm ${!wideView ? 'btn-accent text-accent-content' : 'btn-ghost text-based-content' }`} onClick={() => setWideView(false)}><BsFillGridFill /></button>
+        </div>
       </div>
+      {wideView ? <WideCard products={movies} isMovie={true} /> : <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'><Card products={movies} isMovie={true} /></div>}
       {currentPage < totalPages && (
         <div className='flex justify-center mt-8 mb-8'>
           <button 
