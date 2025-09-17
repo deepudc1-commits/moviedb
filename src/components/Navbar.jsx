@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
   return (
@@ -17,7 +18,7 @@ const Navbar = () => {
               <li><NavLink to='/people'>People</NavLink></li>
             </ul>
           </div>
-          <Link className="btn btn-ghost text-xl" to='/'>FilmsVault</Link>
+          <Link className="btn btn-ghost text-xl" to='/'><img className='w-7' src={logo} /> <span className='text-gray-700 mt-2'>FilmsVault</span></Link>
         </div>
         <div className="navbar-end hidden md:flex">
             <ul className="menu menu-horizontal px-1">
