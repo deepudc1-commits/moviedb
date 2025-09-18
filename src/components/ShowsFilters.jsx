@@ -11,7 +11,7 @@ const ShowsFilters = () => {
   return (
     <div className='mt-5 mb-5'>
       <div className='bg-base-300 rounded-lg shadow-lg px-8 py-4'>
-        <Form>
+        <Form key={JSON.stringify(params)}>
           <SelectBtn name='sort_by' label='Sort by' list={sortList} defaultValue={sort_by} />
           <label htmlFor='with_networks' className='form-control w-full max-w-xs md:ml-5'>
             <div className='label mr-2'>

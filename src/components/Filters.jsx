@@ -15,7 +15,7 @@ const Filters = () => {
   return (
     <div className='mt-5 mb-5 px-10'>
       <div className='bg-base-300 rounded-lg shadow-lg px-8 py-4'>
-        <Form>
+        <Form key={JSON.stringify(params)}>
           <SelectBtn name="sort_by" label="sort by" list={sortList} defaultValue={sort_by} />
           <div className='mt-5 mb-5'>
             <ul className='flex flex-wrap gap-3'>
