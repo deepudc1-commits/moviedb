@@ -5,12 +5,18 @@ import ScrollToTop from '../components/ScrollToTop'
 
 const HomeLayout = () => {
   const navigation = useNavigation()  
+  const isLoading = navigation.state === 'loading' 
   return (
     <>
       <ScrollToTop />
       <div className='grid grid-rows-[auto_1fr_auto] min-h-[100dvh] flex-r'>
         <Navbar />
-        {navigation.state === 'loading' ? <div className='h-screen flex items-center justify-center'><span className='loading loading-ring loading-lg'></span></div> : <Outlet />}
+        {isLoading && (
+          <div className='fixed inset-0 flex items-center justify-center bg-white opacity-80 z-50'>
+            <span className='loading loading-ring loading-lg'></span>
+          </div>
+        )}
+        <Outlet />
         <Footer />
       </div>
     </>

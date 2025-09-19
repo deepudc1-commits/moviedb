@@ -17,7 +17,7 @@ const ShowsFilters = () => {
                   <span className="label-text">Sort by</span>
               </div>
               <select name='sort_by' id='sort' defaultValue={sort_by} className={`select select-bordered`}>
-                <option value='first_air_date.desc'>First aired date</option>
+                <option value='first_air_date.desc'>Airing date</option>
                 <option value='name.asc'>Name</option>
                 <option value='popularity.desc'>Popularity</option>
                 <option value='vote_average.desc'>Vote average</option>
