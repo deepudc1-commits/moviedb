@@ -10,13 +10,26 @@ const Filters = () => {
     const {params, genreIDs} = useLoaderData()
     const {sort_by, with_genres} = params
     console.log(with_genres);
+    console.log(params);
     
     
   return (
     <div className='mt-5 mb-5 px-10'>
       <div className='bg-base-300 rounded-lg shadow-lg px-8 py-4'>
         <Form key={JSON.stringify(params)}>
-          <SelectBtn name="sort_by" label="sort by" list={sortList} defaultValue={sort_by} />
+          <label htmlFor='sort' className="form-control w-full max-w-xs">
+              <div className="label mr-2">
+                  <span className="label-text">Sort by</span>
+              </div>
+              <select name='sort_by' id='sort' defaultValue={sort_by} className={`select select-bordered`}>
+                <option value='first_air_date.desc'>First aired date</option>
+                <option value='name.asc'>Name</option>
+                <option value='popularity.desc'>Popularity</option>
+                <option value='vote_average.desc'>Vote average</option>
+              </select>
+          </label>
+
+          {/* <SelectBtn name="sort_by" label="sort by" list={sortList} defaultValue={sort_by} /> */}
           <div className='mt-5 mb-5'>
             <ul className='flex flex-wrap gap-3'>
               <li><strong>Genres: </strong></li>

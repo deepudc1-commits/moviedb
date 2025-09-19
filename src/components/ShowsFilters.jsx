@@ -12,7 +12,18 @@ const ShowsFilters = () => {
     <div className='mt-5 mb-5'>
       <div className='bg-base-300 rounded-lg shadow-lg px-8 py-4'>
         <Form key={JSON.stringify(params)}>
-          <SelectBtn name='sort_by' label='Sort by' list={sortList} defaultValue={sort_by} />
+          <label htmlFor='sort' className="form-control w-full max-w-xs">
+              <div className="label mr-2">
+                  <span className="label-text">Sort by</span>
+              </div>
+              <select name='sort_by' id='sort' defaultValue={sort_by} className={`select select-bordered`}>
+                <option value='first_air_date.desc'>First aired date</option>
+                <option value='name.asc'>Name</option>
+                <option value='popularity.desc'>Popularity</option>
+                <option value='vote_average.desc'>Vote average</option>
+              </select>
+          </label>
+
           <label htmlFor='with_networks' className='form-control w-full max-w-xs md:ml-5'>
             <div className='label mr-2'>
                 <span className='label-text'>Network</span>
