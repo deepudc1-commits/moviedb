@@ -3,8 +3,8 @@ import fetch from 'node-fetch';
 exports.handler = async function(event, context) {
   const { path, queryStringParameters } = event;
   
-  // Retrieve the API key from Netlify environment variables
-  const tmdb_api_key = process.env.VITE_API_KEY;
+  // Retrieve the API key from the new Netlify environment variable
+  const tmdb_api_key = process.env.TMDB_API_KEY;
 
   // Construct the full URL for the TMDB V3 API
   const api_url = new URL(`https://api.themoviedb.org${path.replace('/.netlify/functions/tmdb-proxy', '')}`);

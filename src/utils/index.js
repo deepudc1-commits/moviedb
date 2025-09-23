@@ -6,7 +6,7 @@ const url = 'https://api.themoviedb.org/3'
 
 // The base URL should now point to your Netlify function proxy
 const proxyUrl = '/.netlify/functions/tmdb-proxy'
-const apiKey = import.meta.env.VITE_API_KEY
+// const apiKey = import.meta.env.VITE_API_KEY
 
 export const customFetch = axios.create({
     baseURL: proxyUrl,
