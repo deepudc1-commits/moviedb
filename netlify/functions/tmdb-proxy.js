@@ -1,26 +1,36 @@
 import fetch from 'node-fetch';
 
 exports.handler = async function(event, context) {
-  const { path, queryStringParameters, headers } = event;
+  const { path, queryStringParameters } = event;
   
-  // Reconstruct the full URL for the TMDB API
+  // Retrieve the API key from Netlify environment variables
+  const tmdb_api_key = process.env.VITE_API_KEY;
+
+  // Construct the full URL for the TMDB V3 API
   const api_url = new URL(`https://api.themoviedb.org${path.replace('/.netlify/functions/tmdb-proxy', '')}`);
   
   // Append query parameters from the frontend request
   Object.keys(queryStringParameters).forEach(key => api_url.searchParams.append(key, queryStringParameters[key]));
   
+  // Add the V3 API key as a query parameter
+  api_url.searchParams.append('api_key', tmdb_api_key);
+  
+  console.log('Constructed TMDb URL:', api_url.href);
+  
   try {
     const response = await fetch(api_url, {
       method: event.httpMethod,
       headers: {
-        'Authorization': headers['authorization'],
         'Content-Type': 'application/json',
-        'User-Agent': 'FilmsVaultApp/1.0', // Add a descriptive User-Agent
+        'User-Agent': 'FilmsVaultApp/1.0',
       }
     });
 
     if (!response.ok) {
-      throw new Error(`TMDb API responded with status: ${response.status}`);
+      console.error('TMDb API response not ok:', response.status, response.statusText);
+      const errorBody = await response.text();
+      console.error('TMDb Error Body:', errorBody);
+      throw new Error(`TMDb API responded with status: ${response.status} - ${errorBody}`);
     }
     const data = await response.json();
     return {
@@ -31,6 +41,7 @@ exports.handler = async function(event, context) {
       body: JSON.stringify(data)
     };
   } catch (error) {
+    console.error('Function execution error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: `Failed to fetch data from TMDb: ${error.message}` })

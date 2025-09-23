@@ -10,9 +10,6 @@ const apiKey = import.meta.env.VITE_API_KEY
 
 export const customFetch = axios.create({
     baseURL: proxyUrl,
-    headers: {
-        Authorization: `Bearer ${apiKey}`
-    }
 })
 
 export const formatPrice = (price) => {
