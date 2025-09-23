@@ -17,6 +17,10 @@ exports.handler = async function(event, context) {
   
   console.log('Constructed TMDb URL:', api_url.href);
   
+console.log('TMDB API Key:', tmdb_api_key ? 'found' : 'missing');
+console.log('Constructed TMDb URL:', api_url.href);
+
+  
   try {
     const response = await fetch(api_url.href, {
       method: event.httpMethod,
