@@ -1,9 +1,9 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
 exports.handler = async function(event, context) {
   const { path, queryStringParameters } = event;
   
-  // Retrieve the API key from the new Netlify environment variable
+  // Retrieve the API key from the Netlify environment variable
   const tmdb_api_key = process.env.TMDB_API_KEY;
 
   // Construct the full URL for the TMDB V3 API
@@ -18,7 +18,7 @@ exports.handler = async function(event, context) {
   console.log('Constructed TMDb URL:', api_url.href);
   
   try {
-    const response = await fetch(api_url, {
+    const response = await fetch(api_url.href, {
       method: event.httpMethod,
       headers: {
         'Content-Type': 'application/json',
