@@ -2,9 +2,8 @@ import fetch from 'node-fetch';
 
 exports.handler = async function(event, context) {
   const { path, queryStringParameters, headers } = event;
-  const tmdb_api_key = process.env.TMDB_API_KEY;
-
-  // Construct the full URL for the TMDb API
+  
+  // Reconstruct the full URL for the TMDB API
   const api_url = new URL(`https://api.themoviedb.org${path.replace('/.netlify/functions/tmdb-proxy', '')}`);
   
   // Append query parameters from the frontend request
@@ -14,8 +13,9 @@ exports.handler = async function(event, context) {
     const response = await fetch(api_url, {
       method: event.httpMethod,
       headers: {
-        'Authorization': headers['authorization'], // Forward the Authorization header
-        'Content-Type': 'application/json'
+        'Authorization': headers['authorization'],
+        'Content-Type': 'application/json',
+        'User-Agent': 'FilmsVaultApp/1.0', // Add a descriptive User-Agent
       }
     });
 
@@ -33,7 +33,7 @@ exports.handler = async function(event, context) {
   } catch (error) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to fetch data from TMDb' })
+      body: JSON.stringify({ error: `Failed to fetch data from TMDb: ${error.message}` })
     };
   }
 };
