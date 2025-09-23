@@ -11,9 +11,7 @@ exports.handler = async function(event, context) {
   
   // Append query parameters from the frontend request
   Object.keys(queryStringParameters).forEach(key => api_url.searchParams.append(key, queryStringParameters[key]));
-  
-  console.log('Constructed TMDb URL:', api_url.href);
-  
+    
   try {
     const response = await fetch(api_url.href, {
       method: event.httpMethod,
