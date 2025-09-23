@@ -12,9 +12,6 @@ exports.handler = async function(event, context) {
   // Append query parameters from the frontend request
   Object.keys(queryStringParameters).forEach(key => api_url.searchParams.append(key, queryStringParameters[key]));
   
-  // Add the V3 API key as a query parameter
-  api_url.searchParams.append('api_key', tmdb_api_key);
-  
   console.log('Constructed TMDb URL:', api_url.href);
   
 console.log('TMDB API Key:', tmdb_api_key ? 'found' : 'missing');
@@ -26,6 +23,7 @@ console.log('Constructed TMDb URL:', api_url.href);
       method: event.httpMethod,
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tmdb_api_key}`,
         'User-Agent': 'FilmsVaultApp/1.0',
       }
     });
