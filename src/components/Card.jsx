@@ -17,7 +17,7 @@ const Card = ({products, isMovie, isFeaturedProducts}) => {
                 return (
                     <div key={id} className="bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                         <Link to={`/${isMovie ? 'movie' : 'tv'}/${id}`}>
-                            <img className="pb-2 rounded-t-lg transition hover:saturate-300" src={poster_path ? `https://media.themoviedb.org/t/p/w440_and_h660_face${poster_path}` : isMovie ? movieIcon : showIcon} alt={title} />
+                            <img className="pb-2 rounded-t-lg transition hover:saturate-300" src={poster_path ? `https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}` : isMovie ? movieIcon : showIcon} alt={title} />
                         </Link>
                         <div className="px-5 pb-5">
                             <div className="radial-progress bg-primary text-primary-content border-primary border-4 mr-3 -mt-12 mb-3"

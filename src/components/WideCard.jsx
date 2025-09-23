@@ -18,7 +18,7 @@ const WideCard = ({products, isMovie, isFeaturedProducts}) => {
                     <>
                         <div className="list bg-base-100 rounded-box shadow-lg hover:shadow-xl duration-300 group mb-7 gap-10">
                             <Link to={`/${isMovie ? 'movie' : 'tv'}/${id}`} className='list-row gap-8'>
-                                <img className="pb-2 w-20 group-hover:scale-105 transition duration-300" src={poster_path ? `https://media.themoviedb.org/t/p/w440_and_h660_face${poster_path}` : isMovie ? movieIcon : showIcon} alt={title} />
+                                <img className="pb-2 w-20 group-hover:scale-105 transition duration-300" src={poster_path ? `https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}` : isMovie ? movieIcon : showIcon} alt={title} />
                                 <div>
                                     <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
                                     <p className="text-gray-900 dark:text-white opacity-60 mar-bot0">{formatDate(releaseDate)}</p> 

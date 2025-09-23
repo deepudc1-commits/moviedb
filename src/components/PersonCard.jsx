@@ -13,7 +13,7 @@ const PersonCard = ({products, isFeatured, hasCharacter}) => {
                     <div key={id} className="text-center">
                         <figure className='mb-5'>
                             <Link to={`/person/${id}`}>
-                                <img className='rounded-full shadow-lg shadow-gray-800 ring-4 ring-white transition duration-300 ease-out hover:-translate-y-4' src={ profile_path ? `https://media.themoviedb.org/t/p/w470_and_h470_face/${profile_path}` : personImg} alt={name} />
+                                <img className='rounded-full shadow-lg shadow-gray-800 ring-4 ring-white transition duration-300 ease-out hover:-translate-y-4' src={ profile_path ? `https://image.tmdb.org/t/p/w470_and_h470_face/${profile_path}` : personImg} alt={name} />
                             </Link>
                         </figure>
                         <div className="">

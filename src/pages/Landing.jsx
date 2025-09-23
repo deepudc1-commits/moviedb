@@ -135,7 +135,7 @@ const Landing = () => {
     <div>
       <div
         className="hero min-h-92"
-        style={{backgroundImage:`url(https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces${banner})`, backgroundPosition: 'center center'}}>
+        style={{backgroundImage:`url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${banner})`, backgroundPosition: 'center center'}}>
         <div className="hero-overlay"></div>
         <div className="hero-content text-neutral-content text-center px-10 md:px-0">
           <div className="max-w-5xl">
@@ -221,14 +221,14 @@ const Landing = () => {
               {
                 networksList.map((network) => {
                   const {id, name, logo_path} = network
-                  return <li key={id}><Link to={`/shows?with_networks=${id}`}><img className='logos transition-all hover:scale-120' src={`https://media.themoviedb.org/t/p/original${logo_path}`} alt={name} /></Link></li>
+                  return <li key={id}><Link to={`/shows?with_networks=${id}`}><img className='logos transition-all hover:scale-120' src={`https://image.tmdb.org/t/p/original${logo_path}`} alt={name} /></Link></li>
                 })
               }
             </ul>
         </div>
       </div>
 
-      <div className='bg-cover bg-center' style={{backgroundImage: `url(https://media.themoviedb.org/t/p/w1920_and_h427_multi_faces${trailerBanner})`}}>      
+      <div className='bg-cover bg-center' style={{backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h427_multi_faces${trailerBanner})`}}>      
         <div className='overlay px-10 py-20'>
           <div className='flex justify-between items-center'>
             <h2 className='text-2xl font-bold text-start mb-5 text-white'>Top Trailers</h2>

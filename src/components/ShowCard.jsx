@@ -31,7 +31,7 @@ const ShowCard = () => {
                                             return (
                                                 <div key={id} className="bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                                                     <Link to={`/movie/${id}`}>
-                                                        <img className="p-8 rounded-t-lg" src={`https://media.themoviedb.org/t/p/w440_and_h660_face${poster_path}`} alt={name} />
+                                                        <img className="p-8 rounded-t-lg" src={`https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}`} alt={name} />
                                                     </Link>
                                                     <div className="px-5 pb-5">
                                                         <Link to={`/movie/${id}`}>
