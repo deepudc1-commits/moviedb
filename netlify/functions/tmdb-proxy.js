@@ -7,7 +7,7 @@ exports.handler = async function(event, context) {
   const tmdb_api_key = process.env.TMDB_API_KEY;
 
   // Construct the full URL for the TMDB V3 API
-  const api_url = new URL(`https://api.themoviedb.org${path.replace('/.netlify/functions/tmdb-proxy', '')}`);
+  const api_url = new URL(`https://api.themoviedb.org/3${path.replace('/.netlify/functions/tmdb-proxy', '')}`);
   
   // Append query parameters from the frontend request
   Object.keys(queryStringParameters).forEach(key => api_url.searchParams.append(key, queryStringParameters[key]));
