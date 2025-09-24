@@ -43,12 +43,21 @@ export const loader = (queryClient) => async({params}) => {
   const movieDetails = await queryClient.ensureQueryData(movieDetailsQuery(movieID))
   const movieCreditsResponse = customFetch(`/movie/${movieID}/credits`);
   void queryClient.prefetchQuery(trailerQuery(movieID))
-  const movieReviewsResponse = await queryClient.ensureQueryData(reviewsQuery(movieID))
-  const movieReviews = movieReviewsResponse.data.results
 
-  const movieRecommendationResponse = await queryClient.ensureQueryData(recommendedMoviesQuery(movieID))
-  const movieRecommendations = movieRecommendationResponse?.data?.results
-  console.log(movieRecommendationResponse);
+  let movieReviews = []
+  let movieRecommendations = []
+  try {
+    const movieReviewsResponse = await queryClient.ensureQueryData(reviewsQuery(movieID))
+    movieReviews = movieReviewsResponse.data.results || []
+  } catch (error) {
+    movieReviews = []
+  }
+  try {
+    const movieRecommendationResponse = await queryClient.ensureQueryData(recommendedMoviesQuery(movieID))
+    movieRecommendations = movieRecommendationResponse?.data?.results || []
+  } catch (error) {
+    movieRecommendations = []
+  }
   
   return ({movieDetails, movieCredits: movieCreditsResponse, movieReviews, movieRecommendations})
 }

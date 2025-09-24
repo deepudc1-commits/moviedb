@@ -16,7 +16,6 @@ const singlePersonQuery = (id) => {
 export const loader = (queryClient) => async({params}) => {
     const response = await queryClient.ensureQueryData(singlePersonQuery(params.personID))
     const person = response.data
-    console.log(person);
     return {person}
 }
 
