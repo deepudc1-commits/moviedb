@@ -55,7 +55,7 @@ export const loader = (queryClient) => async() => {
   
   const initialPeoplePromise = queryClient.prefetchQuery({
     queryKey: ['popularPeople'],
-    queryFn: fetchTrendingPeople()
+    queryFn: () => fetchTrendingPeople()
   })
 
   const popularMovies = await queryClient.ensureQueryData(popularMoviesQuery('week'))
@@ -103,8 +103,9 @@ const Landing = () => {
     let random = Math.floor(Math.random() * banners.length)
     return banners[random]
   }
+
   console.log(trailerBackgrounds);
-  
+
   const [banner, setBanner] = useState(randomBannerFunc)
   const [trailerBanner, setTrailerBanner] = useState(trailerBackgrounds[0].backdrop_path)
   
@@ -234,20 +235,8 @@ const Landing = () => {
             <h2 className='text-2xl font-bold text-start mb-5 text-white'>Top Trailers</h2>
           </div>
 
-          <Suspense fallback={<div className="flex w-52 flex-col gap-4">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>}>
-            <Await resolve={initialMovies} errorElement={<div>Failed to load initial movies!</div>}>
-              {() => (
-                isLoadingMovies ? (
-                  <div><span className="loading loading-dots loading-xl"></span></div>
-                ) : (
-                  topMovieData && (
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
-                      {topMovieData.slice(0, 4).map((movie) => {
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+                      {popularMovies?.data?.results.slice(0, 4).map((movie) => {
                         const {title, id, backdrop_path} = movie
                         return <div key={id} className='cursor-pointer' onMouseOver={() => changeVideoBanner(id)} onClick={()=>openTrailerModal(id)}>
                           <div className='relative group'>
@@ -271,11 +260,6 @@ const Landing = () => {
                         </div>
                       })}
                     </div>
-                  )
-                )
-              )}
-            </Await>
-          </Suspense>
         </div>
       </div>
 

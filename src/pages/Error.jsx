@@ -7,7 +7,14 @@ const Error = () => {
   
   if(isRouteErrorResponse(error)) {
     if (error.status === 404) {
-      return <div>This page doesn't exist!</div>;
+      return (
+      <div className="flex flex-col items-center justify-center min-h-screen text-center">
+        <h1 className="text-4xl font-bold mb-4">404 - Page not found</h1>
+        <p className="text-lg mb-4">
+          Oops! This page doesn't exist.
+        </p>
+      </div>
+      )
     }
   }
 

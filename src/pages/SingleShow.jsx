@@ -48,10 +48,24 @@ export const loader = (queryClient) => async({params}) => {
     const {tvID} = params
     const showDetails = await queryClient.ensureQueryData(showDetailsQuery(tvID))
     const showCredits = await queryClient.ensureQueryData(showCreditsQuery(tvID))
-    const showReviewsResponse = await queryClient.ensureQueryData(showReviewsQuery(tvID))
-    const showReviews = showReviewsResponse?.data?.results
-    const recommendedShowsResponse = await queryClient.ensureQueryData(recommendedShowsQuery(tvID))
-    const recommendedShows = recommendedShowsResponse?.data?.results
+
+    let showReviews = []
+    let recommendedShows = []
+    try {
+      const showReviewsResponse = await queryClient.ensureQueryData(showReviewsQuery(tvID))
+      showReviews = showReviewsResponse?.data?.results || []
+    } catch (error) {
+      showReviews = []
+    }
+
+    try {
+      const recommendedShowsResponse = await queryClient.ensureQueryData(recommendedShowsQuery(tvID))
+      recommendedShows = recommendedShowsResponse?.data?.results || []
+    } catch (error) {
+      recommendedShows = []
+    }
+
+    
     void queryClient.prefetchQuery(trailerQuery(tvID))
     
     console.log(recommendedShows);
