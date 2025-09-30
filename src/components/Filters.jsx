@@ -14,8 +14,8 @@ const Filters = () => {
     
     
   return (
-    <div className='mt-5 mb-5 px-10'>
-      <div className='bg-base-300 rounded-lg shadow-lg px-8 py-4'>
+    <div className='mt-6 mb-5'>
+      <div className='bg-white rounded-lg shadow-lg px-8 py-4'>
         <Form key={JSON.stringify(params)}>
           <label htmlFor='sort' className="form-control w-full max-w-xs">
               <div className="label mr-2">

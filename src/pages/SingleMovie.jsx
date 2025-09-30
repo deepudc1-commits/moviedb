@@ -133,7 +133,7 @@ const SingleMovie = () => {
                       <div className='px-10'>
                         <h2 className="text-2xl font-bold text-start">Cast</h2>
                         <div className='container'>
-                          <div className='max-w-70 sm:max-w-screen grid grid-flow-col auto-cols-[9rem] overflow-x-auto gap-8 pt-5'>
+                          <div className='max-w-70 sm:max-w-screen grid grid-flow-col auto-cols-[9rem] overflow-x-auto gap-8 pt-5 pb-4'>
                             <PersonCard products={cast} hasCharacter={true} />
                           </div>
                         </div>
@@ -162,7 +162,7 @@ const SingleMovie = () => {
               <div className='px-10'>
                 <h2 className="text-2xl font-bold text-start mb-5">Recommended movies</h2>
                 <div className='container'>
-                  <div className='max-w-70 sm:max-w-screen grid grid-flow-col auto-cols-[16rem] overflow-x-auto gap-8'>
+                  <div className='max-w-70 sm:max-w-screen grid grid-flow-col auto-cols-[16rem] overflow-x-auto gap-8 pb-4'>
                     <Card products={movieRecommendations} isMovie={true} />
                   </div>
                 </div>
@@ -207,10 +207,10 @@ const SingleMovie = () => {
         trailer && (
         <dialog id='trailerModal' className="modal">
             <div className="modal-box">
-                <iframe width="100%" height="300" src={`//www.youtube.com/embed/${trailer.key}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=en&modestbranding=1&fs=1&autohide=1`}></iframe>
+              { showTrailer ? 'Loading trailer' :  <iframe width="100%" height="300" src={`//www.youtube.com/embed/${trailer.key}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=en&modestbranding=1&fs=1&autohide=1`}></iframe>}
               <div className="modal-action">
                 <form method="dialog">
-                  <button className="btn">Close</button>
+                  <button className="btn" onClick={() => setShowTrailer(true)}>Close</button>
                 </form>
               </div>
             </div>

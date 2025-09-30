@@ -27,7 +27,7 @@ const SinglePerson = () => {
     const actedShows = tv_credits?.cast
     const [expandBio, setExpandBio] = useState(false)
   return (
-    <div>
+    <div className='bg-gray-200'>
       <div className='mb-10 bg-gray-200 bg-cover' style={{backgroundColor: '#000'}}>
         <div className='overlay p-10'>
           <div className='md:grid md:grid-cols-4 gap-5'>
@@ -78,7 +78,7 @@ const SinglePerson = () => {
             <div className='mb-10'>
               <div className='px-10'>
                 <h2 className="text-2xl font-bold text-start mb-5">Movies</h2>
-                <div className='container grid grid-flow-col auto-cols-[17rem] overflow-x-auto gap-8'>
+                <div className='container grid grid-flow-col auto-cols-[17rem] overflow-x-auto gap-8 pb-4'>
                   <Card products={actedMovies} isMovie={true} />
                 </div>
               </div>
@@ -89,7 +89,7 @@ const SinglePerson = () => {
             <div className='mb-10'>
               <div className='px-10'>
                 <h2 className="text-2xl font-bold text-start mb-5">Tv series</h2>
-                <div className='container grid grid-flow-col auto-cols-[17rem] overflow-x-auto gap-8'>
+                <div className='container grid grid-flow-col auto-cols-[17rem] overflow-x-auto gap-8 pb-4'>
                   <Card products={actedShows} />
                 </div>
               </div>
@@ -100,7 +100,7 @@ const SinglePerson = () => {
             <div className='mb-10'>
               <div className='px-10'>
                 <h2 className="text-2xl font-bold text-start mb-5">Images</h2>
-                <div className='container grid grid-flow-col auto-cols-[17rem] overflow-x-auto gap-8'>
+                <div className='container grid grid-flow-col auto-cols-[17rem] overflow-x-auto gap-8 pb-4'>
                   {
                     personImages.map(pic => {
                       const {file_path} = pic

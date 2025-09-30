@@ -29,7 +29,7 @@ export const loader = (queryClient) => async({request}) => {
 
 const Shows = () => {
   return (
-    <div className='px-10'>
+    <div className='px-10 bg-gray-200'>
       <ShowsFilters />
       <ShowsContainer />
     </div>

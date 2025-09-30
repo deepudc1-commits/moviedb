@@ -35,7 +35,7 @@ export const loader = (queryClient) => async({request}) => {
 
 const Movies = () => {
   return (
-    <div>
+    <div className='px-10 bg-gray-200'>
       <Filters />
       <MoviesContainer />
     </div>

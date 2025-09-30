@@ -27,7 +27,7 @@ const Search = () => {
     console.log(results);
 
   return (
-    <div className='mt-10'>
+    <div className='pt-10 bg-gray-200'>
       <div className='max-w-8xl text-center mb-10'>
         <Form method='get'>
           <label className="input w-full md:w-3/5 focus:outline-none">
