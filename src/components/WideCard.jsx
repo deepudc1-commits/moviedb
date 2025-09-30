@@ -22,7 +22,7 @@ const WideCard = ({products, isMovie, isFeaturedProducts}) => {
                                 <div>
                                     <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
                                     <p className="text-gray-900 dark:text-white opacity-60 mar-bot0">{formatDate(releaseDate)}</p> 
-                                    <p className="list-col-wrap font-normal text-gray-500 mt-2">{overview}</p>
+                                    <p className="list-col-wrap font-normal text-gray-500 mt-2 mar-bot0">{overview}</p>
                                 </div>
                                 
                                 <div className="radial-progress bg-primary text-primary-content border-primary border-4 mt-5"
